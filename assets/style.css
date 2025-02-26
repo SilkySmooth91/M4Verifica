@@ -28,3 +28,43 @@ h1 {
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.223);
     text-shadow: 2px 3px 1px rgba(151, 151, 151, 0.268);
 }
+
+.card {
+    transition: 0.3s ease;
+  }
+  
+.card:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px 2px black;
+  background-color: #19222f !important;
+  z-index: 10;
+}
+
+.card-img-top {
+  border-radius: 10px !important;
+  margin: auto;
+  padding-top: 0.8rem;
+  height: 10rem;
+}
+
+.card-title {
+    font-weight: bolder;
+}
+
+.card-text:last-of-type {
+    font-size: small;
+}
+
+#showProducts > .card:nth-child(5) > .card-img-top {
+    object-fit: cover;
+}
+
+#showProducts > .card > .card-body > .card-footer > a:last-of-type {
+    border: 1px solid #e7746f !important;
+    color: #e7746f !important;
+}
+
+#showProducts > .card > .card-body > .card-footer > a:last-of-type:hover {
+    border: 1px solid #eca19d !important;
+    color: #eca19d !important;
+}

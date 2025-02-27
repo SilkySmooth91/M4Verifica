@@ -5,6 +5,9 @@ const productUrl = "https://striveschool-api.herokuapp.com/api/product/"
 // DOM Elements
 
 const tbody = document.getElementById("tbody")
+const inputName = document.getElementById("inputName")
+const inputBrand = document.getElementById("inputBrand")
+const inputPrice = document.getElementById("inputPrice")
 
 // Fetch
 
@@ -62,6 +65,38 @@ function createRow({name, brand, price}) {
     tableRow.append(cellName, cellBrand, cellPrice, cellActions)
 
     return tableRow
+}
+
+// Create new Items
+
+async function createProduct() {
+    if (inputName.value && inputBrand.value && inputPrice.value) {
+        
+        try {
+            const newProduct = {
+                name: inputName.value,
+                brand: inputBrand.value,
+                price: inputPrice.value,
+                time: new Date()
+            }
+
+            const res = await fetch(productUrl, {
+                method: "POST",
+                body: JSON.stringify(newProduct),
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JkZmJjMjFlMTQwNjAwMTUzMTRkMmEiLCJpYXQiOjE3NDA1MDQwMDIsImV4cCI6MTc0MTcxMzYwMn0.-Z5FkCzoME6YmywZCLj5j4nBAzwp8r5KCaTBvAg12-k"
+                }
+            })
+
+            getProducts()
+        }
+        catch(err) {
+            console.log(err)
+        }
+    } else {
+        alert("You must fill all the fields!")
+    }
 }
 
 

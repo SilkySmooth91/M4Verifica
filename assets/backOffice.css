@@ -21,3 +21,21 @@ main {
     width: 90%;
     margin: auto;
 }
+
+#searchForm {
+    width: 70%;
+    margin: auto;
+}
+
+#searchForm input {
+    height: 2.8rem;
+}
+
+#searchForm .alert {
+    width: 92%;
+    margin: auto;
+}
+
+#searchForm form {
+    gap: 0.5rem;
+}

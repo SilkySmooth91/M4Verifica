@@ -1,0 +1,47 @@
+body {
+    font-family: "Lato";
+    background-color: #ffffff;
+}
+
+nav {
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3);
+}
+
+nav button {
+    border: 1px solid #e7746f !important;
+    color: #e7746f !important;
+}
+
+nav button:hover {
+    border: 1px solid #eca19d !important;
+    color: #eca19d !important;
+}
+
+main {
+    width: 90%;
+    margin: auto;
+}
+
+#searchForm {
+    width: 70%;
+    margin: auto;
+}
+
+#searchForm input {
+    height: 2.8rem;
+}
+
+#searchForm .alert {
+    width: 92%;
+    margin: auto;
+}
+
+#searchForm form {
+    gap: 0.5rem;
+}
+
+h3 {
+    color: #e7746f;
+    text-align: center;
+    font-weight: bold;
+}

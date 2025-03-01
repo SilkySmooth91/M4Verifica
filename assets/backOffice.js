@@ -69,8 +69,8 @@ function createRow({name, brand, price, _id}) {
     remove.classList.add("btn", "btn-danger", "me-2")
     remove.innerHTML = '<i class="fa-regular fa-trash-can"></i>'
     remove.addEventListener("click", () => {
-        if (confirm("Do you really want to delete this product? This action cannot be undone.")) {
-
+        if (confirm("Do you really want to delete this product? This action cannot be undone.")) 
+            {
             deleteProduct(_id)
             }
         })

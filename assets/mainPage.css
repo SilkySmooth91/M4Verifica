@@ -43,8 +43,9 @@ h1 {
 .card-img-top {
   border-radius: 10px !important;
   margin: auto;
-  padding-top: 0.8rem;
+  margin-top: 0.8rem;
   height: 10rem;
+  object-fit: cover !important;
 }
 
 .card-title {

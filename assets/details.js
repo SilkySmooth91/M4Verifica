@@ -1,16 +1,9 @@
-// Endpoint 
+// Endpoint
 
 const productUrl = "https://striveschool-api.herokuapp.com/api/product/"
 
 // DOM Elements
 
-const inputName = document.getElementById("inputName")
-const inputBrand = document.getElementById("inputBrand")
-const inputPrice = document.getElementById("inputPrice")
-const inputImage = document.getElementById("inputImg")
-const inputDesc = document.getElementById("inputDesc")
-const failureAlert = document.getElementById("failure")
-const successAlert = document.getElementById("success")
 const currentProduct = document.getElementById("currentProduct")
 const returnBtn = document.getElementById("return")
 
@@ -55,7 +48,7 @@ function renderCurrentProduct({name, description, imageUrl, price}) {
     cardDescription.innerText = description
 
     const cardPrice = document.createElement("p")
-    cardPrice.classList.add("card-text")
+    cardPrice.classList.add("card-text", "fs-3")
     cardPrice.innerText = price + "€"
 
     cardBody.append(cardTitle, cardDescription, cardPrice)
@@ -65,53 +58,8 @@ function renderCurrentProduct({name, description, imageUrl, price}) {
     return card
 }
 
-// Edit products
-
-function editProduct() {
-    
-    const name = inputName.value;
-    const brand = inputBrand.value;
-    const price = inputPrice.value;
-    const imageUrl = inputImage.value;
-    const description = inputDesc.value;
-
-    if (!name || !brand || !price || !imageUrl || !description) {
-        failureAlert.classList.remove("d-none");
-        setTimeout(() => {
-            failureAlert.classList.add("d-none");
-        }, 4000);
-        return; 
-    }
-
-    currentProduct.innerHTML = "";
-    
-    const product = {name, description, imageUrl, price, brand};
-
-    fetch(productUrl + productId, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JkZmJjMjFlMTQwNjAwMTUzMTRkMmEiLCJpYXQiOjE3NDA1MDQwMDIsImV4cCI6MTc0MTcxMzYwMn0.-Z5FkCzoME6YmywZCLj5j4nBAzwp8r5KCaTBvAg12-k"
-        },
-        body: JSON.stringify(product)
-    })
-    .then(res => res.json())
-    .then(updatedProduct => {
-        
-        successAlert.classList.remove("d-none");
-        setTimeout(() => {
-            successAlert.classList.add("d-none");
-        }, 4000);
-    
-        renderCurrentProduct(updatedProduct);
-    })
-    .catch(err => console.error(err));
-}
-
-
+returnBtn.addEventListener("click", () => {
+    window.location.href = "mainPage.html"
+})
 
 getCurrentProduct()
-
-returnBtn.addEventListener("click", () => {
-    window.location.href = `backOffice.html`
-})

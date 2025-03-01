@@ -35,12 +35,12 @@ function renderProducts(products) {
 }
 
 
-function createCards({name, description, imageUrl, price}) {
+function createCards({name, description, imageUrl, price, _id}) {
     const card = document.createElement("div")
     card.classList.add("card", "bg-transparent", "border-0")
 
     const cardImg = document.createElement("img")
-    cardImg.classList.add("card-img-top")
+    cardImg.classList.add("card-img-top", "img-thumbnail")
     cardImg.src = imageUrl
 
     const cardBody = document.createElement("div")
@@ -59,16 +59,19 @@ function createCards({name, description, imageUrl, price}) {
     cardPrice.innerText = price + "€"
 
     const cardFooter = document.createElement("div")
-    cardFooter.classList.add("card-footer", "d-flex", "justify-content-evenly", "align-items-center")
+    cardFooter.classList.add("card-footer", "d-flex", "justify-content-start", "align-items-center")
     cardFooter.classList.add("d-none")
 
     const addToCart = document.createElement("a")
-    addToCart.classList.add("btn", "btn-success")
+    addToCart.classList.add("btn", "btn-success", "me-2")
     addToCart.innerHTML = '<i class="fa-solid fa-cart-shopping"></i>'
 
     const details = document.createElement("a")
     details.classList.add("btn")
     details.innerHTML = '<i class="fa-regular fa-lightbulb"></i> Scopri di più'
+    details.addEventListener("click", () => {
+        window.location.href = `details.html?id=${_id}`
+    })
 
     cardFooter.append(addToCart, details)
     cardBody.append(cardTitle, cardPrice, cardDescription, cardFooter)

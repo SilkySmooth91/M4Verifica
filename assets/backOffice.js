@@ -68,7 +68,12 @@ function createRow({name, brand, price, _id}) {
     const remove = document.createElement("button")
     remove.classList.add("btn", "btn-danger", "me-2")
     remove.innerHTML = '<i class="fa-regular fa-trash-can"></i>'
-    remove.addEventListener("click", () => deleteProduct(_id))
+    remove.addEventListener("click", () => {
+        if (confirm("Do you really want to delete this product? This action cannot be undone.")) {
+
+            deleteProduct(_id)
+            }
+        })
 
     cellActions.append(modify, remove)
     tableRow.append(cellName, cellBrand, cellPrice, cellActions)

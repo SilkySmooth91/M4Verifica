@@ -1,6 +1,6 @@
 body {
     font-family: "Lato";
-    background-color: #ffffff;
+    background-color: #d3d3d3;
 }
 
 nav {
@@ -23,6 +23,7 @@ main {
 }
 
 h1 {
+    font-family: "Pixelify Sans", sans-serif;
     font-weight: bolder;
     color: #e7746f;
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.223);
@@ -68,4 +69,42 @@ h1 {
 #showProducts > .card > .card-body > .card-footer > a:last-of-type:hover {
     border: 1px solid #eca19d !important;
     color: #eca19d !important;
+}
+
+#cart {
+    background-color: #e7746f !important;
+    color: white !important;
+    border-radius: 60%;
+    min-width: 2.9rem;
+    min-height: 2.7rem;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5rem;
+    padding: 0;
+}
+
+td {
+    border-bottom: none !important;
+}
+
+#cartDropdown > tr > td:last-of-type > button {
+    color: white !important;
+}
+
+#cartDropdown > tr > td:first-of-type  {
+    width: 10%;
+}
+
+#cartDropdown > tr > td:nth-child(2) {
+    width: 50%;
+}
+
+#cartDropdown > tr > td:nth-child(3) {
+    width: 20%;
+}
+
+#cartDropdown > tr > td:last-of-type {
+    width: 20%;
+    display: flex;
+    justify-content: end;
 }

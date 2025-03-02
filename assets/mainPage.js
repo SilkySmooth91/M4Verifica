@@ -5,10 +5,12 @@ const productUrl = "https://striveschool-api.herokuapp.com/api/product/"
 // DOM Elements
 
 const showProducts = document.getElementById("showProducts")
+const cartDropdown = document.getElementById("cartDropdown")
 
 // Fetch
 
 let allProducts = []
+let cart = []
 
 async function getProducts() {
     try {
@@ -65,6 +67,16 @@ function createCards({name, description, imageUrl, price, _id}) {
     const addToCart = document.createElement("a")
     addToCart.classList.add("btn", "btn-success", "me-2")
     addToCart.innerHTML = '<i class="fa-solid fa-cart-shopping"></i>'
+    addToCart.addEventListener("click", () => {
+        const cartElem = cart.find(product => product._id === _id)
+        if (cartElem) {
+            cartElem.quantity++
+        } else {
+            cart.push({_id: _id, quantity: 1, name, price})
+            addToCart.innerHTML = '<i class="fa-solid fa-check"></i> Added to cart!'
+        }
+        createCartElem()
+    })
 
     const details = document.createElement("a")
     details.classList.add("btn")
@@ -93,5 +105,60 @@ function createCards({name, description, imageUrl, price, _id}) {
 
     return card
 }
+
+// Create cart list
+
+function createCartElem() {
+    cartDropdown.innerHTML = ""
+
+    const emptyMsg = document.getElementById("emptyCartMsg")
+
+    if (!emptyMsg.classList.contains("d-none") && (cart.length > 0)) {
+        emptyMsg.classList.add("d-none")
+    } else if (cart.length === 0 && emptyMsg.classList.contains("d-none")) {
+        emptyMsg.classList.remove("d-none")
+    }
+
+    let totalPrice = 0
+
+    cart.forEach((cartElem) => {
+        const cartItem = document.createElement("tr")
+        cartItem.classList.add("d-flex", "align-items-center", "border-bottom", "mb-2")
+
+        const cartItemQuantity = document.createElement("td")
+        cartItemQuantity.innerText = cartElem.quantity + "x"
+
+        const cartItemName = document.createElement("td")
+        cartItemName.classList.add("text-truncate", "ms-1")
+        cartItemName.innerText = cartElem.name
+
+        const cartItemPrice = document.createElement("td")
+        cartItemPrice.innerText = cartElem.price + "€"
+
+        const cartItemActions = document.createElement("td")
+
+        const cartItemRemove = document.createElement("button")
+        cartItemRemove.classList.add("btn", "btn-danger", "me-1")
+        cartItemRemove.innerHTML = '<i class="fa-regular fa-trash-can"></i>'
+        cartItemRemove.addEventListener("click", () => {
+            cart = cart.filter((element) => element._id !== cartElem._id)
+            createCartElem()
+        })
+        
+
+        totalPrice += cartElem.price * cartElem.quantity
+
+        cartItemActions.append(cartItemRemove)
+        cartItem.append(cartItemQuantity, cartItemName, cartItemPrice, cartItemActions)
+        cartDropdown.append(cartItem)
+    })
+
+    const total = document.createElement("div")
+    total.classList.add("d-flex", "align-items-center")
+    total.innerHTML = `<strong>Total Price: ${totalPrice}€</strong>`
+    cartDropdown.append(total)
+}
+
+
 
 getProducts()

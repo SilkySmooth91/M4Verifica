@@ -11,7 +11,18 @@ const searchInput = document.getElementById("searchInput")
 // Fetch
 
 let allProducts = []
-let cart = []
+
+// Cart fetch data 
+
+const cartData = localStorage.getItem("cart");
+let cart;
+
+if (cartData) {
+  cart = JSON.parse(cartData);
+  createCartElem()
+} else {
+  cart = [];
+}
 
 async function getProducts() {
     try {
@@ -76,7 +87,7 @@ function createCards({name, description, imageUrl, price, _id}) {
             cart.push({_id: _id, quantity: 1, name, price})
             addToCart.innerHTML = '<i class="fa-solid fa-check"></i> Added to cart!'
         }
-        // localStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem("cart", JSON.stringify(cart));
         createCartElem()
     })
 

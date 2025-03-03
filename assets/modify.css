@@ -52,3 +52,60 @@ h3 {
     background-color: #19222f !important;
     color: white;
 }
+
+#cart {
+    background-color: #e7746f !important;
+    color: white !important;
+    border-radius: 60%;
+    min-width: 2.8rem;
+    min-height: 2.7rem;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5rem;
+    padding: 0;
+}
+
+td {
+    border-bottom: none !important;
+}
+
+#cartDropdown > tr > td:last-of-type > button {
+    color: white !important;
+}
+
+#cartDropdown > tr > td:first-of-type  {
+    width: 10%;
+}
+
+#cartDropdown > tr > td:nth-child(2) {
+    width: 50%;
+}
+
+#cartDropdown > tr > td:nth-child(3) {
+    width: 20%;
+}
+
+#cartDropdown > tr > td:last-of-type {
+    width: 20%;
+    display: flex;
+    justify-content: end;
+}
+
+.fa-solid {
+    font-size: 0.8rem;
+}
+
+.btn-primary {
+    background-color: #e7746f !important;
+    border-color: #e7746f !important;
+}
+
+.btn-primary:hover {
+    border: 1px solid #eca19d !important;
+    background-color: #eca19d !important;
+}
+
+
+footer {
+    color: white;
+}

@@ -12,6 +12,7 @@ const inputImage = document.getElementById("inputImg")
 const inputDesc = document.getElementById("inputDesc")
 const failureAlert = document.getElementById("failure")
 const successAlert = document.getElementById("success")
+const searchInput = document.getElementById("searchInput")
 
 
 // Fetch
@@ -69,7 +70,7 @@ function createRow({name, brand, price, _id}) {
     remove.classList.add("btn", "btn-danger", "me-2")
     remove.innerHTML = '<i class="fa-regular fa-trash-can"></i>'
     remove.addEventListener("click", () => {
-        if (confirm("Do you really want to delete this product? This action cannot be undone.")) 
+        if (confirm(`Do you really want to delete ${name}? This action cannot be undone.`)) 
             {
             deleteProduct(_id)
             }
@@ -138,6 +139,19 @@ async function deleteProduct(id) {
     catch(err) {
         console.log(err)
     }
+}
+
+// Search
+
+function search() {
+    const searchValue = searchInput.value.toLowerCase()
+
+    const filteredProducts = allProducts.filter(product => 
+        product.name.toLowerCase().includes(searchValue) ||
+        product.brand.toLowerCase().includes(searchValue) ||
+        product.price === Number (searchValue)
+    )
+    renderTable(filteredProducts)
 }
 
 

@@ -1,6 +1,6 @@
 body {
     font-family: "Lato";
-    background-color: #ffffff;
+    background-color: #d3d3d3;
 }
 
 nav {
@@ -27,6 +27,11 @@ main {
     margin: auto;
 }
 
+#searchForm > div > button:hover {
+    border: 1px solid #eca19d !important;
+    background-color: #eca19d !important;
+}
+
 #searchForm input {
     height: 2.8rem;
 }
@@ -38,4 +43,69 @@ main {
 
 #searchForm form {
     gap: 0.5rem;
+}
+
+.table > :not(caption) > * > * {
+    background-color: #b3b3b3;
+}
+
+.table tr:nth-child(odd) > td {
+    background-color: #212529 !important;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #e7746f !important;
+    border-color: #e7746f !important;
+}
+
+#tbody > tr > td:last-of-type {
+    width: 15%;
+}
+
+#cart {
+    background-color: #e7746f !important;
+    color: white !important;
+    border-radius: 60%;
+    min-width: 2.8rem;
+    min-height: 2.7rem;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5rem;
+    padding: 0;
+}
+
+td {
+    border-bottom: none !important;
+}
+
+#cartDropdown > tr > td:last-of-type > button {
+    color: white !important;
+}
+
+#cartDropdown > tr > td:first-of-type  {
+    width: 10%;
+}
+
+#cartDropdown > tr > td:nth-child(2) {
+    width: 50%;
+}
+
+#cartDropdown > tr > td:nth-child(3) {
+    width: 20%;
+}
+
+#cartDropdown > tr > td:last-of-type {
+    width: 20%;
+    display: flex;
+    justify-content: end;
+}
+
+.fa-solid {
+    font-size: 0.8rem;
+}
+
+
+footer {
+    color: white;
 }

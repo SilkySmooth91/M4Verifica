@@ -75,7 +75,7 @@ h1 {
     background-color: #e7746f !important;
     color: white !important;
     border-radius: 60%;
-    min-width: 2.9rem;
+    min-width: 2.8rem;
     min-height: 2.7rem;
     justify-content: center;
     align-items: center;
@@ -107,4 +107,12 @@ td {
     width: 20%;
     display: flex;
     justify-content: end;
+}
+
+.fa-solid {
+    font-size: 0.8rem;
+}
+
+footer {
+    color: white;
 }

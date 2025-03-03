@@ -6,6 +6,7 @@ const productUrl = "https://striveschool-api.herokuapp.com/api/product/"
 
 const showProducts = document.getElementById("showProducts")
 const cartDropdown = document.getElementById("cartDropdown")
+const searchInput = document.getElementById("searchInput")
 
 // Fetch
 
@@ -75,6 +76,7 @@ function createCards({name, description, imageUrl, price, _id}) {
             cart.push({_id: _id, quantity: 1, name, price})
             addToCart.innerHTML = '<i class="fa-solid fa-check"></i> Added to cart!'
         }
+        // localStorage.setItem("cart", JSON.stringify(cart));
         createCartElem()
     })
 
@@ -142,6 +144,7 @@ function createCartElem() {
         cartItemRemove.innerHTML = '<i class="fa-regular fa-trash-can"></i>'
         cartItemRemove.addEventListener("click", () => {
             cart = cart.filter((element) => element._id !== cartElem._id)
+            // localStorage.setItem("cart", JSON.stringify(cart))
             createCartElem()
         })
         
@@ -157,6 +160,19 @@ function createCartElem() {
     total.classList.add("d-flex", "align-items-center")
     total.innerHTML = `<strong>Total Price: ${totalPrice}€</strong>`
     cartDropdown.append(total)
+}
+
+// Search
+
+function search() {
+    const searchValue = searchInput.value.toLowerCase()
+
+    const filteredProducts = allProducts.filter(product => 
+        product.name.toLowerCase().includes(searchValue) ||
+        product.brand.toLowerCase().includes(searchValue) ||
+        product.price === Number (searchValue)
+    )
+    renderProducts(filteredProducts)
 }
 
 

@@ -7,6 +7,17 @@ const productUrl = "https://striveschool-api.herokuapp.com/api/product/"
 const currentProduct = document.getElementById("currentProduct")
 const returnBtn = document.getElementById("return")
 
+// Cart fetch data 
+
+// const cartData = localStorage.getItem("cart");
+// let cart;
+// 
+// if (cartData) {
+//   cart = JSON.parse(cartData);
+// } else {
+//   cart = [];
+// }
+
 // fetch current product with query string
 
 const urlParams = new URLSearchParams(window.location.search);
